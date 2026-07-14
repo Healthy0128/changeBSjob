@@ -3,177 +3,555 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>仕事を分解する研修スライド</title>
+<title>教育の時間を取り戻すために｜20分版</title>
 <style>
 :root{
   --bg:#fff9ed; --paper:#fffef9; --ink:#273247; --muted:#6f7786;
   --line:#ead9bb; --blue:#dff0ff; --blue2:#8fc7ff; --green:#e9f8dd; --green2:#9fd18a;
   --pink:#fff0f5; --pink2:#ffa9c3; --yellow:#fff5c7; --yellow2:#ffd76b; --orange:#fff0de;
+  --purple:#eee8ff; --purple2:#b7a2ff; --red:#ff6b7a;
   --shadow:0 18px 40px rgba(92,74,45,.13); --radius:28px;
 }
 *{box-sizing:border-box}
-body{margin:0;width:100vw;height:100vh;overflow:hidden;color:var(--ink);font-family:"Yu Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",Meiryo,sans-serif;background:linear-gradient(135deg,#fff7dc,#eef9ff 52%,#fff2f6)}
-body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(215,190,148,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(215,190,148,.18) 1px,transparent 1px);background-size:34px 34px;pointer-events:none;}
-.app{position:relative;width:100%;height:100%;display:flex;padding:18px;gap:18px}.sidebar{width:245px;min-width:245px;background:rgba(255,255,255,.75);border:3px solid var(--line);border-radius:34px;box-shadow:var(--shadow);padding:22px 16px;position:relative;overflow:hidden}.sidebar:after,.main:after{content:"";position:absolute;inset:12px;border:2px dashed rgba(120,96,60,.22);border-radius:25px;pointer-events:none}.brand{text-align:center;position:relative;z-index:1;margin-bottom:16px}.brand .icon{font-size:46px;display:block;animation:bob 3s infinite ease-in-out}.brand h1{font-size:22px;line-height:1.25;margin:6px 0 4px}.brand p{margin:0;color:var(--muted);font-size:13px}.nav{display:flex;flex-direction:column;gap:7px;position:relative;z-index:1}.nav button{border:2px solid #eddcc1;background:#fffef9;border-radius:18px;padding:10px 11px;font-size:13px;font-weight:900;color:#566174;cursor:pointer;text-align:left;display:flex;gap:9px;align-items:center;transition:.2s}.nav button span{width:25px;height:25px;border-radius:999px;background:#e6f2ff;color:#4271a8;display:grid;place-items:center;flex:none}.nav button.active{transform:translateX(5px);background:#fff4c9;border-color:#ffd66c;color:#3c4961}.main{flex:1;position:relative;min-width:0;background:rgba(255,255,255,.72);border:3px solid var(--line);border-radius:36px;box-shadow:var(--shadow);overflow:hidden}.slide{position:absolute;inset:0;padding:34px 46px;display:none;animation:slideIn .38s ease both}.slide.active{display:block}.header{display:flex;gap:17px;align-items:center;margin-bottom:18px}.badge{width:58px;height:58px;border-radius:50%;background:#fff0a9;border:3px solid #ffd25a;display:grid;place-items:center;font-size:30px;font-weight:1000;box-shadow:0 10px 16px rgba(190,143,39,.12)}h2{font-size:42px;line-height:1.15;margin:0;letter-spacing:-.02em}.underline{height:8px;width:390px;border-radius:999px;background:linear-gradient(90deg,#ffd76b,#ffb2c7,#98d78b,#92caff);margin-top:8px;transform:rotate(-1deg)}.grid{display:grid;gap:18px}.cols2{grid-template-columns:1fr 1fr}.cols3{grid-template-columns:repeat(3,1fr)}.card{background:var(--paper);border:3px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 10px 24px rgba(92,74,45,.09);position:relative}.card h3{margin:0 0 12px;font-size:27px}.card p{margin:8px 0;font-size:22px;line-height:1.55;font-weight:800}.card ul{margin:10px 0 0;padding-left:1.2em;font-size:21px;line-height:1.65;font-weight:800}.blue{background:var(--blue);border-color:#a7d2ff}.green{background:var(--green);border-color:#b8dda5}.pink{background:var(--pink);border-color:#ffc3d4}.yellow{background:var(--yellow);border-color:#ffe08b}.orange{background:var(--orange);border-color:#ffd3a3}.bigmsg{font-size:36px;line-height:1.55;font-weight:1000}.small{font-size:16px!important;color:var(--muted);font-weight:800!important}.kpi{display:flex;align-items:baseline;justify-content:center;gap:7px}.kpi .v{font-size:66px;line-height:1;color:#ef526f;font-weight:1000;letter-spacing:-2px}.kpi .u{font-size:24px;font-weight:1000}.formula{font-size:28px;line-height:1.55;background:#fff;border:3px dashed #dccaa9;border-radius:22px;padding:18px;font-weight:1000;text-align:center}.barwrap{height:232px;display:flex;gap:62px;justify-content:center;align-items:end;border-bottom:4px solid #e4d2b3;margin:14px 0 6px}.bar{width:160px;border-radius:24px 24px 4px 4px;display:flex;align-items:flex-start;justify-content:center;padding-top:14px;font-weight:1000;font-size:21px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.55)}.bar.short{height:42px;background:#ffb6c6}.bar.tall{height:205px;background:#b9dcff}.labels{display:flex;gap:62px;justify-content:center}.labels div{width:160px;text-align:center;font-weight:1000;font-size:18px}.flow3{display:grid;grid-template-columns:1fr 62px 1fr 62px 1fr;align-items:stretch;gap:10px;margin-top:26px}.phase{min-height:300px;cursor:pointer;transition:.22s}.phase:hover{transform:translateY(-8px) rotate(-1deg)}.phase .ico{font-size:58px}.phase h3{font-size:31px}.arrow{display:grid;place-items:center;font-size:42px}.hint{text-align:center;font-size:22px;font-weight:1000;color:#70604a;margin-top:15px}.layerArea{position:relative;height:560px;display:grid;place-items:center}.giantCard{width:min(820px,90%);height:250px;display:grid;place-items:center;text-align:center;cursor:pointer;transition:.3s}.giantCard:hover{transform:translateY(-6px) rotate(.5deg)}.giantCard .mainText{font-size:58px;font-weight:1000}.splitCards{display:none;width:100%;grid-template-columns:repeat(3,1fr);gap:20px}.splitCards.show{display:grid;animation:rise .4s ease both}.miniTask{min-height:130px;display:grid;place-items:center;text-align:center;font-size:28px;font-weight:1000;cursor:pointer;transition:.2s}.miniTask:hover{transform:translateY(-5px)}.thinking{font-size:28px;font-weight:1000;text-align:center;margin:10px 0}.sticky{display:inline-block;background:#fff2a8;border:3px solid #f2ce4d;border-radius:8px 26px 12px 22px;padding:14px 18px;box-shadow:0 12px 22px rgba(172,130,37,.13);transform:rotate(-1.2deg);font-size:25px;font-weight:1000}.dots{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:18px}.dotCard{min-height:125px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:22px;font-weight:1000}.dotCard .emoji{font-size:40px}.roleGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px}.roleCard{min-height:380px}.roleCard .roleIcon{font-size:60px;text-align:center}.roleCard h3{text-align:center;font-size:30px}.quote{background:#fff;border:4px solid #eadcc4;border-radius:32px;padding:34px;font-size:35px;line-height:1.55;font-weight:1000;position:relative}.quote:after{content:"✏️";position:absolute;right:28px;bottom:18px;font-size:56px}.overlay{position:absolute;inset:0;display:none;z-index:20;align-items:center;justify-content:center;padding:46px;background:rgba(255,250,235,.82);backdrop-filter:blur(5px)}.overlay.show{display:flex;animation:fade .22s ease both}.modal{width:min(980px,92%);background:#fffef9;border:4px solid #e3cfaa;border-radius:34px;box-shadow:0 24px 68px rgba(78,57,30,.24);padding:28px;animation:zoom .25s ease both}.modalHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.modal h3{font-size:36px;margin:0}.close{border:0;background:#f5ead8;border-radius:50%;width:46px;height:46px;font-size:28px;cursor:pointer}.tasks{display:grid;gap:12px}.task{font-size:25px;font-weight:1000;background:#fff;border:3px solid #eadcc4;border-radius:20px;padding:15px 18px;display:flex;gap:12px;align-items:center}.footer{position:absolute;right:34px;bottom:20px;color:#8a7a64;font-weight:900}.fadeIn{animation:fadeUp .45s ease both}.delay1{animation-delay:.1s}.delay2{animation-delay:.2s}.delay3{animation-delay:.3s}@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes zoom{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@media (max-width:1150px){.sidebar{width:205px;min-width:205px}.slide{padding:26px}.card p,.card ul{font-size:17px}h2{font-size:33px}.bigmsg{font-size:28px}.formula{font-size:21px}.phase h3{font-size:25px}.phase ul{font-size:17px}.giantCard .mainText{font-size:42px}.miniTask{font-size:22px}.roleGrid{gap:10px}.roleCard{min-height:330px}.roleCard h3{font-size:24px}}
-
-/* ===== v5: resolution-independent stage ===== */
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  color:var(--ink);
+  font-family:"Yu Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+  background:linear-gradient(135deg,#fff7dc,#eef9ff 52%,#fff2f6);
+}
+body:before{
+  content:"";position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(215,190,148,.18) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(215,190,148,.18) 1px,transparent 1px);
+  background-size:34px 34px;pointer-events:none;
+}
+button{font-family:inherit}
 .app{
-  width:1600px !important;
-  height:900px !important;
-  max-width:none !important;
-  max-height:none !important;
-  position:absolute !important;
-  left:50% !important;
-  top:50% !important;
+  width:1600px;height:900px;position:absolute;left:50%;top:50%;
   transform:translate(-50%,-50%) scale(var(--deck-scale,1));
-  transform-origin:center center;
-  padding:18px !important;
+  transform-origin:center center;display:flex;padding:18px;gap:18px;
 }
-.main,.sidebar{height:100%;}
-.slide{padding:34px 46px;}
-.centerSlide{display:none;}
-.centerSlide.active{display:flex !important;flex-direction:column;justify-content:center;}
-.centerSlide .header{margin-bottom:26px;}
-.centerSlide h2{font-size:48px;}
-.centerSlide .card h3{font-size:32px;}
-.centerSlide .card p,.centerSlide .card ul{font-size:25px;line-height:1.62;}
-.centerSlide .bigmsg{font-size:39px;line-height:1.45;}
-.centerSlide .thinking{font-size:34px;margin-top:24px;}
-.centerSlide .dots{margin-top:24px;align-items:stretch;}
-.centerSlide .dotCard{min-height:178px;font-size:27px;line-height:1.35;}
-.centerSlide .dotCard .emoji{font-size:52px;margin-bottom:6px;}
-.centerSlide .roleGrid{align-items:center;}
-.centerSlide .roleCard{min-height:430px;display:flex;flex-direction:column;justify-content:center;}
-.centerSlide .roleCard ul{font-size:24px;}
-.centerSlide .quote{font-size:40px;}
-.centerSlide .hint{font-size:28px;margin-top:22px;}
-@media (max-width:1150px){
-  .app{width:1600px !important;height:900px !important;}
-  .sidebar{width:245px !important;min-width:245px !important;}
-  h2{font-size:42px;}
-  .card p,.card ul{font-size:21px;}
+.sidebar{
+  width:245px;min-width:245px;height:100%;background:rgba(255,255,255,.78);
+  border:3px solid var(--line);border-radius:34px;box-shadow:var(--shadow);
+  padding:22px 16px;position:relative;overflow:hidden;
 }
-
+.sidebar:after,.main:after{
+  content:"";position:absolute;inset:12px;border:2px dashed rgba(120,96,60,.22);
+  border-radius:25px;pointer-events:none;
+}
+.brand{text-align:center;position:relative;z-index:1;margin-bottom:12px}
+.brand .icon{font-size:43px;display:block;animation:bob 3s infinite ease-in-out}
+.brand h1{font-size:21px;line-height:1.25;margin:5px 0 3px}
+.brand p{margin:0;color:var(--muted);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:5px;position:relative;z-index:1}
+.nav button{
+  border:2px solid #eddcc1;background:#fffef9;border-radius:16px;padding:7px 9px;
+  font-size:12px;font-weight:900;color:#566174;cursor:pointer;text-align:left;
+  display:flex;gap:8px;align-items:center;transition:.2s;
+}
+.nav button span{
+  width:23px;height:23px;border-radius:999px;background:#e6f2ff;color:#4271a8;
+  display:grid;place-items:center;flex:none;
+}
+.nav button.active{
+  transform:translateX(4px);background:#fff4c9;border-color:#ffd66c;color:#3c4961;
+}
+.main{
+  flex:1;height:100%;position:relative;min-width:0;background:rgba(255,255,255,.74);
+  border:3px solid var(--line);border-radius:36px;box-shadow:var(--shadow);overflow:hidden;
+}
+.slide{
+  position:absolute;inset:0;padding:32px 44px;display:none;animation:slideIn .38s ease both;
+}
+.slide.active{display:block}
+.centerSlide.active{display:flex;flex-direction:column;justify-content:center}
+.header{display:flex;gap:17px;align-items:center;margin-bottom:16px}
+.badge{
+  width:56px;height:56px;border-radius:50%;background:#fff0a9;border:3px solid #ffd25a;
+  display:grid;place-items:center;font-size:28px;font-weight:1000;
+  box-shadow:0 10px 16px rgba(190,143,39,.12)
+}
+h2{font-size:40px;line-height:1.15;margin:0;letter-spacing:-.02em}
+.underline{
+  height:8px;width:390px;border-radius:999px;
+  background:linear-gradient(90deg,#ffd76b,#ffb2c7,#98d78b,#92caff);
+  margin-top:8px;transform:rotate(-1deg)
+}
+.grid{display:grid;gap:18px}.cols2{grid-template-columns:1fr 1fr}.cols3{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:var(--paper);border:3px solid var(--line);border-radius:var(--radius);
+  padding:21px;box-shadow:0 10px 24px rgba(92,74,45,.09);position:relative;
+}
+.card h3{margin:0 0 10px;font-size:26px}
+.card p{margin:7px 0;font-size:21px;line-height:1.5;font-weight:800}
+.card ul{margin:8px 0 0;padding-left:1.2em;font-size:20px;line-height:1.58;font-weight:800}
+.blue{background:var(--blue);border-color:#a7d2ff}
+.green{background:var(--green);border-color:#b8dda5}
+.pink{background:var(--pink);border-color:#ffc3d4}
+.yellow{background:var(--yellow);border-color:#ffe08b}
+.orange{background:var(--orange);border-color:#ffd3a3}
+.purple{background:var(--purple);border-color:#cbbdff}
+.bigmsg{font-size:34px;line-height:1.5;font-weight:1000}
+.small{font-size:15px!important;color:var(--muted);font-weight:800!important}
+.quote{
+  background:#fff;border:4px solid #eadcc4;border-radius:32px;padding:32px;
+  font-size:33px;line-height:1.52;font-weight:1000;position:relative;
+}
+.quote:after{content:"✏️";position:absolute;right:24px;bottom:15px;font-size:50px}
+.purposeGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.purposeCard{min-height:235px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.purposeCard .emoji{font-size:61px;margin-bottom:6px}.purposeCard h3{font-size:29px}.purposeCard p{font-size:20px}
+.question{
+  font-size:44px;line-height:1.42;font-weight:1000;text-align:center;margin:16px auto 20px;
+  max-width:1100px;
+}
+.pause{text-align:center;font-size:23px;font-weight:900;color:#796b56;margin-top:10px}
+.series{display:grid;grid-template-columns:1fr 65px 1fr 65px 1fr;align-items:center;gap:8px;margin-top:24px}
+.seriesCard{min-height:300px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.seriesCard .num{font-size:58px;font-weight:1000;line-height:1}.seriesCard .emoji{font-size:56px;margin:6px}
+.arrow{display:grid;place-items:center;font-size:40px}
+.transferHero{
+  height:500px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;
+}
+.transferHero .lead{font-size:36px;font-weight:1000;margin-bottom:16px}
+.transferHero .answer{
+  font-size:82px;font-weight:1000;color:#ef526f;letter-spacing:4px;
+  background:#fff8c9;border:5px solid #ffd65e;border-radius:36px;padding:20px 52px;
+  box-shadow:0 18px 34px rgba(176,128,34,.16);transform:rotate(-1deg);
+  opacity:0;scale:.5;
+}
+.transferHero .answer.show{animation:pop .55s cubic-bezier(.2,1.5,.4,1) forwards}
+.transferHero .desc{font-size:29px;font-weight:1000;margin-top:20px;opacity:0}
+.transferHero .desc.show{animation:fadeUp .4s ease forwards}
+.transferHero .truth{
+  margin-top:20px;font-size:24px;font-weight:900;color:#5e6573;background:#fff;
+  border:3px dashed #dbc8a5;border-radius:22px;padding:13px 22px;opacity:0
+}
+.transferHero .truth.show{animation:fadeUp .4s .15s ease forwards}
+.revealBtn,.gameBtn,.timerBtn{
+  border:0;border-radius:999px;padding:14px 28px;font-size:21px;font-weight:1000;
+  cursor:pointer;box-shadow:0 8px 16px rgba(77,70,50,.14);transition:.18s;
+}
+.revealBtn:hover,.gameBtn:hover,.timerBtn:hover{transform:translateY(-3px)}
+.revealBtn{background:#273247;color:#fff;margin-top:16px}
+.gameBtn{background:#fff;border:3px solid #eadcc4;color:#38445b}
+.timerBtn{background:#273247;color:#fff}
+.iceGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.iceChoice{
+  min-height:155px;border:3px solid #eadcc4;border-radius:25px;background:#fff;
+  padding:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;font-size:20px;font-weight:1000;cursor:pointer;transition:.2s;
+}
+.iceChoice:hover{transform:translateY(-6px) rotate(-1deg)}
+.iceChoice.selected{background:#fff5c7;border-color:#ffd76b;transform:translateY(-7px)}
+.iceChoice .emoji{font-size:46px;margin-bottom:8px}
+.voteCount{text-align:center;font-size:25px;font-weight:1000;margin-top:18px}
+.flowArea{height:535px;position:relative;display:grid;place-items:center}
+.questCard{
+  width:830px;min-height:240px;text-align:center;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;cursor:pointer;transition:.25s;
+}
+.questCard:hover{transform:translateY(-6px)}
+.questCard .mainText{font-size:55px;font-weight:1000}
+.questCard .sub{font-size:23px;font-weight:900;color:#6d7480;margin-top:10px}
+.taskMap{
+  display:none;width:100%;grid-template-columns:repeat(3,1fr);gap:18px;align-items:center;
+}
+.taskMap.show{display:grid;animation:rise .45s ease both}
+.taskNode{
+  min-height:165px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;font-size:25px;font-weight:1000;cursor:pointer;transition:.2s;position:relative;
+}
+.taskNode:hover{transform:translateY(-6px)}
+.taskNode.completed:after{
+  content:"CLEAR!";position:absolute;right:10px;top:10px;background:#273247;color:#fff;
+  border-radius:999px;padding:5px 10px;font-size:13px;transform:rotate(6deg)
+}
+.taskNode .ico{font-size:48px;margin-bottom:5px}
+.progressWrap{position:absolute;left:70px;right:70px;bottom:28px}
+.progressLabel{font-weight:1000;text-align:center;margin-bottom:7px}
+.progress{height:22px;border-radius:999px;background:#eee4d2;overflow:hidden;border:3px solid #e1cfac}
+.progress > div{height:100%;width:0;background:linear-gradient(90deg,#8fc7ff,#9fd18a,#ffd76b);transition:.4s}
+.dots{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:16px}
+.dotCard{
+  min-height:138px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;font-size:21px;font-weight:1000;
+}
+.dotCard .emoji{font-size:38px}
+.groupBoard{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
+.stepList{counter-reset:step;display:grid;gap:11px}
+.step{
+  background:#fff;border:3px solid #eadcc4;border-radius:20px;padding:12px 16px;
+  font-size:21px;font-weight:1000;display:flex;align-items:center;gap:12px;
+}
+.step:before{
+  counter-increment:step;content:counter(step);width:38px;height:38px;border-radius:50%;
+  background:#e8f3ff;color:#3e6fa4;display:grid;place-items:center;flex:none;
+}
+.note{
+  font-size:24px;font-weight:1000;text-align:center;padding:15px;border-radius:20px;
+  background:#fff7ca;border:3px solid #ffdf79;margin-top:15px;
+}
+.timerPanel{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+}
+.timerDisplay{
+  font-size:86px;font-weight:1000;line-height:1;color:#ef526f;letter-spacing:3px;
+  background:#fff;border:4px solid #eadcc4;border-radius:30px;padding:18px 34px;min-width:290px;
+}
+.timerControls{display:flex;gap:12px;margin-top:16px}
+.timerHint{font-size:20px;font-weight:900;color:#6d7480;margin-top:13px}
+.shareCards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.shareCard{min-height:175px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.shareCard .emoji{font-size:48px}.shareCard p{font-size:20px}
+.kpi{display:flex;align-items:baseline;justify-content:center;gap:7px}
+.kpi .v{font-size:62px;line-height:1;color:#ef526f;font-weight:1000;letter-spacing:-2px}
+.kpi .u{font-size:22px;font-weight:1000}
+.finalInvite{
+  background:#fff;border:4px solid #eadcc4;border-radius:34px;padding:34px 40px;
+  font-size:29px;line-height:1.6;font-weight:1000;
+}
+.finalInvite .soft{color:#6f7786;font-size:24px;margin-top:12px}
+.overlay{
+  position:absolute;inset:0;display:none;z-index:20;align-items:center;justify-content:center;
+  padding:46px;background:rgba(255,250,235,.86);backdrop-filter:blur(5px)
+}
+.overlay.show{display:flex;animation:fade .22s ease both}
+.modal{
+  width:min(980px,92%);background:#fffef9;border:4px solid #e3cfaa;border-radius:34px;
+  box-shadow:0 24px 68px rgba(78,57,30,.24);padding:28px;animation:zoom .25s ease both
+}
+.modalHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.modal h3{font-size:34px;margin:0}
+.close{border:0;background:#f5ead8;border-radius:50%;width:46px;height:46px;font-size:28px;cursor:pointer}
+.tasks{display:grid;gap:11px}
+.task{
+  font-size:23px;font-weight:1000;background:#fff;border:3px solid #eadcc4;border-radius:18px;
+  padding:13px 16px;display:flex;gap:12px;align-items:center
+}
+.footer{position:absolute;right:32px;bottom:18px;color:#8a7a64;font-weight:900}
+.fadeIn{animation:fadeUp .45s ease both}.delay1{animation-delay:.1s}.delay2{animation-delay:.2s}.delay3{animation-delay:.3s}
+@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes zoom{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;scale:.5;transform:rotate(-8deg)}70%{opacity:1;scale:1.12;transform:rotate(2deg)}100%{opacity:1;scale:1;transform:rotate(-1deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 </style>
 </head>
 <body>
 <div class="app">
   <aside class="sidebar">
-    <div class="brand"><span class="icon">🧩</span><h1>仕事を分解する</h1><p>業務改善の考え方</p></div>
+    <div class="brand">
+      <span class="icon">🧩</span>
+      <h1>教育の時間を<br>取り戻す</h1>
+      <p>業務改善研修・20分版</p>
+    </div>
     <div class="nav" id="nav"></div>
   </aside>
+
   <main class="main">
-    <section class="slide active" data-title="はじめに">
-      <div class="header"><div class="badge">1</div><div><h2>今日は「ツールの使い方」ではありません</h2><div class="underline"></div></div></div>
-      <div class="grid cols2" style="align-items:center;height:70%">
-        <div class="quote fadeIn">AIやExcelの前に、まずは仕事を分解して見る癖をつける。<br>それだけで、仕事はかなりスムーズに進みます 😊</div>
-        <div class="card yellow fadeIn delay1"><h3>今日のゴール</h3><p>「次に何をすればいいか」が見える状態をつくること。</p><p>人は忘れる。だから、仕事を記憶ではなく流れで回します。</p><div style="font-size:80px;text-align:center">🧠➡️📝➡️🛤️</div></div>
-      </div><div class="footer">← → キー / 左メニューで移動</div>
-    </section>
 
-    <section class="slide" data-title="昨年度の成果">
-      <div class="header"><div class="badge">2</div><div><h2>昨年度、業務改善で生まれた時間</h2><div class="underline"></div></div></div>
-      <div class="grid cols3">
-        <div class="card green fadeIn"><h3>🌅 朝の欠席連絡</h3><p>副担任の転記作業を0に。</p><div class="kpi"><span class="v">950</span><span class="u">分</span></div><p class="small">毎朝5分 × 190登校日</p></div>
-        <div class="card blue fadeIn delay1"><h3>📄 通知表作成</h3><p>担任の作業はほぼ確認だけ。</p><div class="kpi"><span class="v">約17</span><span class="u">時間</span></div><p class="small">7クラス全体の想定差分</p></div>
-        <div class="card pink fadeIn delay2"><h3>🎓 進路関係</h3><p>調査書・出願校集約・資料作成も削減。</p><div class="kpi"><span class="v">確認</span><span class="u">中心</span></div><p class="small">志望校確認・必要入力に集中</p></div>
-      </div>
-      <div class="card yellow" style="margin-top:22px"><p class="bigmsg">ポイントは「すごいツール」ではなく、仕事を分解して、詰まる場所を先に見つけたことです。</p></div>
-    </section>
-
-    <section class="slide" data-title="数字の内訳">
-      <div class="header"><div class="badge">3</div><div><h2>通知表作成の削減効果を数字で見る</h2><div class="underline"></div></div></div>
-      <div class="grid cols2">
-        <div class="card blue"><h3>本来かかる想定時間</h3><div class="formula">1人あたり入力 5分 × 35人<br>= 175分（2時間55分）<br><br>175分 × 7クラス<br>= 1,225分（20時間25分）</div><p class="small">入力だけの最低見積もり。実際は確認・中断・集中力低下でもっと増えやすい。</p></div>
-        <div class="card green"><h3>実際に行った作業時間</h3><div class="formula">通知表作成〜確認前まで<br>一括して作成<br><br>= 約180分（3時間）</div><p class="small">担任は一から作らず、完成品に近いものを確認。</p></div>
-      </div>
-      <div class="barwrap"><div class="bar short">3時間</div><div class="bar tall">20時間25分</div></div>
-      <div class="labels"><div>実際の作業<br>全体</div><div>本来の想定<br>7クラス全体</div></div>
-      <div class="card yellow" style="margin-top:12px"><p class="bigmsg">削減時間：1,225分 − 180分 = 1,045分（約17時間25分）</p></div>
-    </section>
-
-    <section class="slide" data-title="通知表を分解">
-      <div class="header"><div class="badge">4</div><div><h2>まずは「通知表づくり」を分解する</h2><div class="underline"></div></div></div>
-      <div class="layerArea">
-        <div class="card yellow giantCard" id="giant" onclick="splitWork()"><div><div class="mainText">📄 通知表づくり</div><p>クリックして分解</p></div></div>
-        <div class="splitCards" id="splitCards">
-          <div class="card green miniTask" onclick="openModal('info')">📁<br>情報集めパート</div>
-          <div class="card pink miniTask" onclick="openModal('input')">⌨️<br>打ち込みパート</div>
-          <div class="card blue miniTask" onclick="openModal('check')">🔍<br>確認パート</div>
+    <section class="slide active centerSlide" data-title="はじめに">
+      <div class="header"><div class="badge">1</div><div><h2>教育の時間を取り戻すために <span class="small">0〜1分</span></h2><div class="underline"></div></div></div>
+      <div class="grid cols2" style="align-items:center">
+        <div class="quote fadeIn">
+          書類仕事が多くて、<br>
+          本当に自分が時間を使いたいところに、<br>
+          十分な時間を使えていないと感じませんか？
+        </div>
+        <div class="card yellow fadeIn delay1">
+          <h3>今日の研修は</h3>
+          <p>AIのすごさを紹介する研修でも、</p>
+          <p>新しいツールを覚える研修でもありません。</p>
+          <p class="bigmsg" style="margin-top:18px">仕事を早く終えるための研修で、残業が増えたら本末転倒ですよね（笑）。<br><br>今日は20分で、「仕事を分解して見る」という考え方だけ持ち帰ってください。</p>
         </div>
       </div>
-      <div class="hint">大きな仕事は、いくつかの小さな仕事でできています 👆</div>
+      <div class="footer">← → キー / 左メニューで移動</div>
     </section>
 
-    <section class="slide centerSlide" data-title="分解して見る">
-      <div class="header"><div class="badge">5</div><div><h2>工程をよく見ると、非効率が見えてくる</h2><div class="underline"></div></div></div>
-      <div class="grid cols2" style="align-items:center; margin-top:12px;">
-        <div class="card yellow"><h3>見るポイント 👀</h3><ul><li>同じ情報を何回も触っていないか</li><li>人によって表記が変わっていないか</li><li>集め方がバラバラになっていないか</li><li>確認や修正が何度も発生していないか</li><li>「次どうするんだっけ？」が起きていないか</li></ul></div>
-        <div class="card green"><h3>考え方 🧠</h3><p>ツールを先に考えない。</p><p>まず、工程を分けて、どこで時間がかかっているかを見る。</p><p>そのあとで、変える場所を決める。</p></div>
+<section class="slide centerSlide" data-title="目的">
+      <div class="header"><div class="badge">2</div><div><h2>この研修の目的 <span class="small">1〜2分</span></h2><div class="underline"></div></div></div>
+      <div class="purposeGrid">
+        <div class="card green purposeCard"><div class="emoji">🧑‍🏫</div><h3>生徒と向き合う</h3></div>
+        <div class="card blue purposeCard"><div class="emoji">📚</div><h3>授業を考える</h3></div>
+        <div class="card pink purposeCard"><div class="emoji">😊</div><h3>心の余裕をつくる</h3></div>
       </div>
-      <div class="thinking">仕事を分解する → 詰まる場所を見る → 改善案を考える</div>
+      <div class="card yellow" style="margin-top:22px">
+        <p class="bigmsg">そのために、教育そのものではない「必要以上の手間」を減らします。</p>
+      </div>
     </section>
 
-    <section class="slide centerSlide" data-title="効率化の思考例">
-      <div class="header"><div class="badge">6</div><div><h2>例：通知表なら、こう考える</h2><div class="underline"></div></div></div>
+<section class="slide centerSlide" data-title="アイスブレイク">
+  <div class="header"><div class="badge">3</div><div><h2>まず一つだけ質問です <span class="small">2〜3分</span></h2><div class="underline"></div></div></div>
+  <div class="question">
+    学校の先生に必要な力って何でしょう？
+  </div>
+
+  <div class="grid cols3" style="margin-top:24px">
+    <div class="card green" style="text-align:center">
+      <div style="font-size:64px">📚</div>
+      <h3>教科指導力</h3>
+    </div>
+
+    <div class="card blue" style="text-align:center">
+      <div style="font-size:64px">🧑‍🏫</div>
+      <h3>生徒指導力</h3>
+    </div>
+
+    <div class="card yellow" style="text-align:center">
+      <div style="font-size:64px">❓</div>
+      <h3>あと一つは？</h3>
+    </div>
+  </div>
+
+  <div class="pause" style="font-size:28px">
+    10秒だけ考えてみてください。<br>
+    思いついた方はぜひ教えてください。
+  </div>
+</section>
+
+<section class="slide centerSlide" data-title="答え合わせ">
+      <div class="header"><div class="badge">4</div><div><h2>答えは… <span class="small">3〜4分</span></h2><div class="underline"></div></div></div>
+      <div class="transferHero">
+        <div class="lead">教科指導力、生徒指導力、そして……</div>
+        <div class="answer" id="transferAnswer">転記力</div>
+        <div class="desc" id="transferDesc">一回書いたことを、別の紙に、もう一回書く力。</div>
+        <div class="truth" id="transferTruth">冗談のようですが、事務仕事が早く終わるかどうかが、この力に左右される場面があります。</div>
+        <button class="revealBtn" id="revealBtn" onclick="revealTransfer()">答えを見る</button>
+      </div>
+    </section>
+
+<section class="slide" data-title="分解クエスト">
+      <div class="header"><div class="badge">5</div><div><h2>分解クエスト <span class="small">4〜7分</span></h2><div class="underline"></div></div></div>
+      <div class="flowArea">
+        <div class="card yellow questCard" id="questCard" onclick="startQuest()">
+          <div class="mainText">📄 通知表づくり</div>
+          <div class="sub">クリックして、大きな仕事を3つの工程に分解</div>
+        </div>
+        <div class="taskMap" id="taskMap">
+          <div class="card green taskNode" data-key="info" onclick="clearTask(this,'info')"><div class="ico">📁</div>情報を集める</div>
+          <div class="card pink taskNode" data-key="input" onclick="clearTask(this,'input')"><div class="ico">⌨️</div>記入・反映する</div>
+          <div class="card blue taskNode" data-key="check" onclick="clearTask(this,'check')"><div class="ico">🔍</div>確認・修正する</div>
+        </div>
+        <div class="progressWrap">
+          <div class="progressLabel" id="progressLabel">クエスト開始前</div>
+          <div class="progress"><div id="progressBar"></div></div>
+        </div>
+      </div>
+    </section>
+
+<section class="slide centerSlide" data-title="発見ポイント">
+      <div class="header"><div class="badge">6</div><div><h2>気になる工程を探す <span class="small">7〜8分</span></h2><div class="underline"></div></div></div>
       <div class="dots">
-        <div class="card dotCard green"><span class="emoji">📝</span>情報集めは<br>フォーム化できそう</div>
-        <div class="card dotCard blue"><span class="emoji">📊</span>整形や並べ替えは<br>Excelでできそう</div>
-        <div class="card dotCard pink"><span class="emoji">🔤</span>表記ブレは<br>一元化で減らせそう</div>
-        <div class="card dotCard orange"><span class="emoji">🧑‍💻</span>修正は一括で<br>1人が行う方が速そう</div>
+        <div class="card dotCard yellow"><span class="emoji">🔁</span>同じ情報を<br>何度も扱う</div>
+        <div class="card dotCard blue"><span class="emoji">⏳</span>誰かを待つ<br>時間がある</div>
+        <div class="card dotCard pink"><span class="emoji">🌀</span>やり方や表記が<br>人によって違う</div>
+        <div class="card dotCard orange"><span class="emoji">❓</span>次の手順が<br>分かりにくい</div>
       </div>
-      <div class="card yellow" style="margin-top:22px"><p class="bigmsg">「誰が頑張るか」ではなく、「どの工程を変えるか」を考える。</p></div>
+      <div class="card green" style="margin-top:22px"><p class="bigmsg">ここでは、まだ解決方法を考えなくて大丈夫です。まずは「気になる工程」を見つけます。</p></div>
     </section>
 
-    <section class="slide centerSlide" data-title="道具は後から">
-      <div class="header"><div class="badge">7</div><div><h2>パソコンやAIは、工程を減らすための選択肢</h2><div class="underline"></div></div></div>
-      <div class="roleGrid">
-        <div class="card green roleCard"><div class="roleIcon">🧑</div><h3>人間</h3><ul><li>指示する</li><li>確認する</li><li>判断する</li><li>責任を持つ</li><li>最終決定をする</li></ul></div>
-        <div class="card blue roleCard"><div class="roleIcon">💻</div><h3>パソコン</h3><ul><li>情報を規則的に加工する</li><li>並べ替える</li><li>集計する</li><li>同じ処理を繰り返す</li><li>転記を減らす</li></ul></div>
-        <div class="card pink roleCard"><div class="roleIcon">🤖</div><h3>AI</h3><ul><li>文章を読む</li><li>規則性を見つける</li><li>表現を整える</li><li>数式やマクロを作る</li><li>人間の考えを補助する</li></ul></div>
+<section class="slide centerSlide" data-title="グループワーク">
+      <div class="header"><div class="badge">7</div><div><h2>グループワーク <span class="small">8〜15分</span></h2><div class="underline"></div></div></div>
+      <div class="groupBoard">
+        <div class="card yellow">
+          <h3>4人程度で行います</h3>
+          <div class="stepList">
+            <div class="step">一人一つ、困っている仕事を出す</div>
+            <div class="step">グループで一つ選ぶ</div>
+            <div class="step">最初から最後までの流れを書く</div>
+            <div class="step">時間がかかる工程に印をつける</div>
+            <div class="step">なぜ時間がかかるかを話す</div>
+          </div>
+          <div class="note" style="font-size:19px">
+            例：通知表、成績処理、提出物、欠席連絡、体育祭、合唱祭、修学旅行、校外学習、部活動、進路関係
+          </div>
+          <div class="note">解決策は、まだ考えなくて構いません。</div>
+        </div>
+        <div class="card blue timerPanel">
+          <h3>グループワーク</h3>
+          <div class="timerDisplay" id="timerDisplay">07:00</div>
+          <div class="timerControls">
+            <button class="gameBtn" onclick="changeTimer(-60)">−1分</button>
+            <button class="gameBtn" onclick="changeTimer(60)">＋1分</button>
+          </div>
+          <div class="timerControls">
+            <button class="timerBtn" onclick="startTimer()">開始</button>
+            <button class="gameBtn" onclick="pauseTimer()">一時停止</button>
+            <button class="gameBtn" onclick="resetTimer()">リセット</button>
+          </div>
+          <div class="timerHint">様子を見ながら、その場で時間を増減できます。最後の1分で共有内容を一つ決めます。</div>
+        </div>
       </div>
-      <div class="hint">主役は道具ではなく、仕事を分解して見ること。</div>
     </section>
 
-    <section class="slide centerSlide" data-title="まとめ">
-      <div class="header"><div class="badge">8</div><div><h2>仕事を分解する癖をつける</h2><div class="underline"></div></div></div>
-      <div class="grid cols2" style="align-items:center;height:70%">
-        <div class="quote">仕事は「気合い」で回すのではなく、止まらないように設計する。</div>
-        <div class="card yellow"><h3>今日持ち帰ってほしいこと</h3><ul><li>仕事は細かく分けると見える</li><li>工程を見ると、詰まる場所が見える</li><li>詰まる場所が見えれば、改善案が出せる</li><li>ICTやAIは、その改善案を実現する手段</li></ul><div style="font-size:64px;text-align:center">🧩✨</div></div>
+<section class="slide centerSlide" data-title="共有">
+      <div class="header"><div class="badge">8</div><div><h2>共有するのは「発見」 <span class="small">15〜17分</span></h2><div class="underline"></div></div></div>
+      <div class="shareCards">
+        <div class="card green shareCard"><div class="emoji">🧩</div><h3>選んだ仕事</h3><p>何の仕事を分解したか</p></div>
+        <div class="card yellow shareCard"><div class="emoji">⚠️</div><h3>気になった工程</h3><p>どこで時間がかかっていたか</p></div>
+        <div class="card blue shareCard"><div class="emoji">💡</div><h3>分かった理由</h3><p>なぜ時間がかかるのか</p></div>
       </div>
-      <div class="footer">通知表以外の仕事も、同じように分解できます</div>
+      <div class="note">「どう解決するか」は、次の段階で考えます。</div>
     </section>
 
-    <div class="overlay" id="overlay" onclick="closeModal(event)"><div class="modal" onclick="event.stopPropagation()"><div class="modalHead"><h3 id="modalTitle"></h3><button class="close" onclick="hideModal()">×</button></div><div class="tasks" id="modalTasks"></div></div></div>
+<section class="slide centerSlide" data-title="実例">
+      <div class="header"><div class="badge">9</div><div><h2>実際に変わった例 <span class="small">17〜18分</span></h2><div class="underline"></div></div></div>
+      <div class="grid cols2">
+        <div class="card green">
+          <h3>🌅 朝の欠席連絡</h3>
+          <p>同じ情報の転記をなくす。</p>
+          <div class="kpi"><span class="v">950</span><span class="u">分</span></div>
+          <p class="small">5分 × 190登校日</p>
+        </div>
+        <div class="card blue">
+          <h3>📄 通知表作成</h3>
+          <p>情報集約・記入・確認を分けて整理。</p>
+          <div class="kpi"><span class="v">約17</span><span class="u">時間</span></div>
+          <p class="small">1人5分 × 35人 × 7クラス − 一括作業約180分</p>
+        </div>
+      </div>
+      <div class="card yellow" style="margin-top:22px">
+        <p class="bigmsg">特別なツールの話ではなく、まず工程を見直した結果です。</p>
+      </div>
+    </section>
+
+<section class="slide centerSlide" data-title="まとめ">
+      <div class="header"><div class="badge">10</div><div><h2>今日持ち帰ってほしいこと <span class="small">18〜19分</span></h2><div class="underline"></div></div></div>
+      <div class="grid cols2" style="align-items:center">
+        <div class="quote">「仕方がない仕事」として受け入れる前に、<br>一度だけ、仕事の流れを分けて見てみる。</div>
+        <div class="card yellow"><ul><li>仕事は、細かく分けると見えやすくなる</li><li>時間がかかる場所には理由がある</li><li>改善は、やめる・まとめる・順番を変えることから始められる</li><li>ICTやAIは、改善を形にするための手段</li></ul></div>
+      </div>
+    </section>
+
+<section class="slide centerSlide" data-title="次回以降">
+      <div class="header"><div class="badge">11</div><div><h2>最後に <span class="small">19〜20分</span></h2><div class="underline"></div></div></div>
+      <div class="finalInvite">
+        今日は、答えを持ち帰ってほしいわけではありません。<br><br>
+        「この仕事、一度分けて見てみようかな」と思っていただければ十分です。<br><br>
+        次回以降は自由参加です。<br>
+        分解してみて気になった仕事があれば、ICTやAIも使いながら一緒に形にしていきましょう。
+        <div class="soft">お忙しい中、ありがとうございました。</div>
+      </div>
+    </section>
+
+    <div class="overlay" id="overlay" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modalHead"><h3 id="modalTitle"></h3><button class="close" onclick="hideModal()">×</button></div>
+        <div class="tasks" id="modalTasks"></div>
+      </div>
+    </div>
+
   </main>
 </div>
+
 <script>
-const slides=[...document.querySelectorAll('.slide')];let current=0;
+const slides=[...document.querySelectorAll('.slide')];
+let current=0;
 const nav=document.getElementById('nav');
-slides.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=`<span>${i+1}</span>${s.dataset.title}`;b.onclick=()=>go(i);nav.appendChild(b)});
-function go(i){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,idx)=>s.classList.toggle('active',idx===current));[...nav.children].forEach((b,idx)=>b.classList.toggle('active',idx===current));hideModal();}
 
-function fitDeck(){
-  const baseW=1600, baseH=900;
-  const margin=8;
-  const scale=Math.min((window.innerWidth-margin)/baseW,(window.innerHeight-margin)/baseH);
-  document.documentElement.style.setProperty('--deck-scale', Math.max(0.35, scale));
+slides.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.innerHTML=`<span>${i+1}</span>${s.dataset.title}`;
+  b.onclick=()=>go(i);
+  nav.appendChild(b);
+});
+
+function go(i){
+  current=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,idx)=>s.classList.toggle('active',idx===current));
+  [...nav.children].forEach((b,idx)=>b.classList.toggle('active',idx===current));
+  hideModal();
 }
-window.addEventListener('resize', fitDeck);
-fitDeck();
+function fitDeck(){
+  const baseW=1600, baseH=900, margin=8;
+  const scale=Math.min((window.innerWidth-margin)/baseW,(window.innerHeight-margin)/baseH);
+  document.documentElement.style.setProperty('--deck-scale',Math.max(0.35,scale));
+}
+window.addEventListener('resize',fitDeck);
+fitDeck();go(0);
 
-go(0);
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1);if(e.key==='Escape')hideModal();});
-function splitWork(){document.getElementById('giant').style.opacity='.18';document.getElementById('giant').style.transform='scale(.94)';document.getElementById('splitCards').classList.add('show');}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') go(current+1);
+  if(e.key==='ArrowLeft'||e.key==='PageUp') go(current-1);
+  if(e.key==='Home') go(0);
+  if(e.key==='End') go(slides.length-1);
+  if(e.key==='Escape') hideModal();
+});
+
+
+
+function revealTransfer(){
+  document.getElementById('transferAnswer').classList.add('show');
+  document.getElementById('transferDesc').classList.add('show');
+  document.getElementById('transferTruth').classList.add('show');
+  document.getElementById('revealBtn').style.display='none';
+}
+
+let questStarted=false;
+let cleared=new Set();
+function startQuest(){
+  if(questStarted)return;
+  questStarted=true;
+  document.getElementById('questCard').style.display='none';
+  document.getElementById('taskMap').classList.add('show');
+  updateProgress();
+}
+function clearTask(el,key){
+  cleared.add(key);
+  el.classList.add('completed');
+  openModal(key);
+  updateProgress();
+}
+function updateProgress(){
+  const n=cleared.size;
+  document.getElementById('progressBar').style.width=`${n/3*100}%`;
+  const labels=['クエスト開始！工程をクリック','1つ発見','2つ発見','3工程に分解完了！'];
+  document.getElementById('progressLabel').textContent=labels[n];
+}
+
 const data={
- info:{title:'📁 情報集めパートをさらに分解',items:['📊 成績をつける（各教科）','🏫 特別活動の情報を集める（係・委員会・生徒会など）','🏆 表彰情報を集める（各顧問へ確認）','📅 出席情報を集める（健康観察・出欠記録など）','📘 記載する文言・ルールを確認する']},
- input:{title:'⌨️ 打ち込みパートをさらに分解',items:['🔢 情報を書く順番を確認する','📝 実際に通知表へ記入する','📋 所見や特記事項を反映する','🔁 必要に応じて修正する']},
- check:{title:'🔍 確認パートをさらに分解',items:['✅ 成績・評定など数字を点検する','🔡 誤字脱字を確認する','📏 担任ごとの表記ブレを確認する','👀 最終確認を行う']}
+  info:{title:'📁 情報を集める工程',items:['📊 成績や評価に必要な情報を集める','🏫 係・委員会・生徒会などの情報を集める','🏆 表彰情報を各担当から集める','📅 出席情報を確認する','📘 記載ルールや文言を確認する']},
+  input:{title:'⌨️ 記入・反映する工程',items:['🔢 情報を書く順番を確認する','📝 通知表へ記入する','📋 所見や特記事項を反映する','🔁 修正内容を再反映する']},
+  check:{title:'🔍 確認・修正する工程',items:['✅ 成績・評定などの数字を点検する','🔡 誤字脱字を確認する','📏 表記の違いを確認する','👀 最終確認を行う']}
 };
-function openModal(key){const d=data[key];document.getElementById('modalTitle').textContent=d.title;document.getElementById('modalTasks').innerHTML=d.items.map(x=>`<div class="task"><span>▫️</span>${x}</div>`).join('');document.getElementById('overlay').classList.add('show');}
-function hideModal(){document.getElementById('overlay').classList.remove('show');}
-function closeModal(e){if(e.target.id==='overlay')hideModal();}
+function openModal(key){
+  const d=data[key];
+  document.getElementById('modalTitle').textContent=d.title;
+  document.getElementById('modalTasks').innerHTML=d.items.map(x=>`<div class="task"><span>▫️</span>${x}</div>`).join('');
+  document.getElementById('overlay').classList.add('show');
+}
+function hideModal(){document.getElementById('overlay').classList.remove('show')}
+function closeModal(e){if(e.target.id==='overlay')hideModal()}
+
+let remaining=480;
+let defaultDuration=480;
+let timerId=null;
+function drawTimer(){
+  const m=String(Math.floor(remaining/60)).padStart(2,'0');
+  const s=String(remaining%60).padStart(2,'0');
+  document.getElementById('timerDisplay').textContent=`${m}:${s}`;
+}
+function startTimer(){
+  if(timerId)return;
+  timerId=setInterval(()=>{
+    if(remaining>0){remaining--;drawTimer();}
+    else{clearInterval(timerId);timerId=null;document.getElementById('timerDisplay').textContent='終了！';}
+  },1000);
+}
+function pauseTimer(){clearInterval(timerId);timerId=null}
+function changeTimer(delta){
+  pauseTimer();
+  remaining=Math.max(60,Math.min(1200,remaining+delta));
+  defaultDuration=remaining;
+  drawTimer();
+}
+function resetTimer(){pauseTimer();remaining=defaultDuration;drawTimer()}
+drawTimer();
 </script>
 </body>
 </html>
